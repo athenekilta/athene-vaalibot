@@ -1,0 +1,4 @@
+*.bak
+*.secret
+venv/
+__pycache__/
