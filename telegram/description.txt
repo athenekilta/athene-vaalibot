@@ -1,1 +1,4 @@
 Ilmoittaa vaalifoorumilla https://athene.fi/vaalit/ tapahtuvista ehdolleasettumisista - jos kaikki toimii kuten pitää.
+
+Tietoa: https://github.com/samporapeli/athene-vaalibot/.
+GNU General Public License v3.0.
