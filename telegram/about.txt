@@ -1,2 +1,1 @@
-Ilmoittaa vaalifoorumilla https://athene.fi/vaalit/ tapahtuvista ehdolleasettumisista - jos kaikki toimii kuten pitää. 
-GNU General Public License v3.0. Lähdekoodi: https://github.com/samporapeli/athene-vaalibot/.
+Tietoa: https://github.com/samporapeli/athene-vaalibot/. GNU General Public License v3.0.
