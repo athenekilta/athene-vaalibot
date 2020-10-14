@@ -14,7 +14,7 @@ except KeyError:
     print("You must set VAALI_BOT_TOKEN environment variable (export VAALI_BOT_TOKEN=your_telegram_token)")
     sys.exit(1)
 
-bot = telebot.TeleBot(token, parse_mode=None)
+bot = telebot.TeleBot(token, parse_mode="MARKDOWN")
 
 with open("data.json", "r") as datafile:
     data = json.load(datafile)
@@ -36,6 +36,15 @@ def stop_bot(message):
         del data["active_chats"][data["active_chats"].index(message.chat.id)]
         save_data()
     bot.reply_to(message, "En enää laita ilmoituksia tähän ryhmään, ellet lähetä minulle /start uudelleen.")
+
+@bot.message_handler(commands=["tilanne"])
+def situation(message):
+    response_text = ""
+    for election_list in data["config"]["lists"]:
+        list_link = f"[{election_list['name']}]({election_list['user_url']})"
+        response_text += f"{list_link}: {str(election_list['last_count'])}\n"
+    response_text += "Tarkemmat tiedot: https://athene.fi/vaalit/"
+    bot.reply_to(message, response_text)
 
 thread = threading.Thread(target=bot.polling)
 thread.daemon = True

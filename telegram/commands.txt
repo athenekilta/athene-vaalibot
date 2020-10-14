@@ -1,2 +1,3 @@
 start - Aloita ilmoitusten näyttäminen
+tilanne - Näytä ehdolle asettuneiden lukumäärä (julkaisujen perusteella)
 stop - Lopeta ilmoitukset
