@@ -1,0 +1,2 @@
+start - Aloita ilmoitusten näyttäminen
+stop - Lopeta ilmoitukset
