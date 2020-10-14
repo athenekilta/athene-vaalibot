@@ -9,7 +9,7 @@ import threading
 import time
 
 try:
-    token = os.environ['VAALI_BOT_TOKEN']
+    token = os.environ["VAALI_BOT_TOKEN"]
 except KeyError:
     print("You must set VAALI_BOT_TOKEN environment variable (export VAALI_BOT_TOKEN=your_telegram_token)")
     sys.exit(1)
@@ -23,14 +23,14 @@ def save_data():
     with open("data.json", "w") as datafile:
         json.dump(data, datafile)
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=["start", "help"])
 def start_bot(message):
     if message.chat.id not in data["active_chats"]:
         data["active_chats"].append(message.chat.id)
         save_data()
     bot.reply_to(message, "Hienoa, yritän nyt muistaa ilmoittaa, jos joku asettuu ehdolle!")
 
-@bot.message_handler(commands=['stop'])
+@bot.message_handler(commands=["stop"])
 def stop_bot(message):
     if message.chat.id in data["active_chats"]:
         del data["active_chats"][data["active_chats"].index(message.chat.id)]
