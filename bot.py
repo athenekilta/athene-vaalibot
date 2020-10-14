@@ -23,7 +23,16 @@ def save_data():
     with open("data.json", "w") as datafile:
         json.dump(data, datafile)
 
-@bot.message_handler(commands=["start", "help"])
+@bot.message_handler(commands=["help"])
+def help_message(message):
+    with open("telegram/description.txt", "r") as description_file:
+        description = description_file.readlines()
+    with open("telegram/commands.txt", "r") as commands_file:
+        commands = commands_file.readlines()
+    response_text = "".join(description + ["\n"] + ["/" + line for line in commands])
+    bot.reply_to(message, response_text)
+
+@bot.message_handler(commands=["start"])
 def start_bot(message):
     if message.chat.id not in data["active_chats"]:
         data["active_chats"].append(message.chat.id)

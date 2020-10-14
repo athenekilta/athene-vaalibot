@@ -1,3 +1,4 @@
 start - Aloita ilmoitusten näyttäminen
 tilanne - Näytä ehdolle asettuneiden lukumäärä (julkaisujen perusteella)
+help - Näytä tämä teksti
 stop - Lopeta ilmoitukset
