@@ -68,7 +68,10 @@ while True:
             if new_count > election_list["last_count"]:
                 print(f"{time.strftime('%T')}: {new_count} > {election_list['last_count']}: {election_list['change_text']}")
                 for chat_id in data["active_chats"]:
-                    bot.send_message(chat_id, election_list["change_text"] + "\n" + election_list["user_url"])
+                    try:
+                        bot.send_message(chat_id, election_list["change_text"] + "\n" + election_list["user_url"])
+                    except:
+                        print("Unable to send to chat " + str(chat_id))
                 election_list["last_count"] = new_count
                 save_data()
     except:
