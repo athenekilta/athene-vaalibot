@@ -16,6 +16,9 @@ except KeyError:
 
 bot = telebot.TeleBot(token, parse_mode="MARKDOWN")
 
+max_requests_per_second = 30
+required_delay = 1 / max_requests_per_second
+
 with open("data.json", "r") as datafile:
     data = json.load(datafile)
 
@@ -67,11 +70,18 @@ while True:
             new_count = len(api_response["data"])
             if new_count > election_list["last_count"]:
                 print(f"{time.strftime('%T')}: {new_count} > {election_list['last_count']}: {election_list['change_text']}")
+                before_send_time = time.time()
+                previous_request_start = time.time() - required_delay
                 for chat_id in data["active_chats"]:
+                    sleep_time = max(0, required_delay - (time.time() - previous_request_start))
+                    time.sleep(sleep_time)
+                    previous_request_start = time.time()
                     try:
                         bot.send_message(chat_id, election_list["change_text"] + "\n" + election_list["user_url"])
                     except:
                         print("Unable to send to chat " + str(chat_id))
+                time_taken = time.time() - before_send_time
+                print(f"Messages sent in {time_taken} seconds ({len(data['active_chats'])/time_taken} requests/second)")
                 election_list["last_count"] = new_count
                 save_data()
     except:
