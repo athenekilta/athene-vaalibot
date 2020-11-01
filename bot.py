@@ -68,6 +68,9 @@ while True:
         for election_list in data["config"]["lists"]:
             api_response = json.loads(requests.get(election_list["api_url"]).text)
             new_count = len(api_response["data"])
+            while "next" in api_response["links"]:
+                api_response = json.loads(requests.get(api_response["links"]["next"]).text)
+                new_count += len(api_response["data"])
             if new_count > election_list["last_count"]:
                 print(f"{time.strftime('%T')}: {new_count} > {election_list['last_count']}: {election_list['change_text']}")
                 before_send_time = time.time()
