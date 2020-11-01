@@ -85,8 +85,8 @@ while True:
                         print("Unable to send to chat " + str(chat_id))
                 time_taken = time.time() - before_send_time
                 print(f"Messages sent in {time_taken} seconds ({len(data['active_chats'])/time_taken} requests/second)")
-                election_list["last_count"] = new_count
-                save_data()
+            election_list["last_count"] = new_count
+            save_data()
     except:
         print("Error, waiting and trying again")
         time.sleep(30)
