@@ -7,6 +7,9 @@ cd athene-vaalibot
 python3 -m venv venv         # or virtualenv -p python3 venv
 source venv/bin/activate
 pip install -r requirements.txt
+# "legacy" bot (sends messages to multiple chats)
 export VAALI_BOT_TOKEN=your_telegram_token_here
 ./bot.py
+# channel bot (only sends message to one chat/channel)
+VAALI_BOT_TOKEN=your_telegram_token_here VAALI_BOT_CHAT_ID=channel_chat_id_here ./channel_bot.py
 ```
