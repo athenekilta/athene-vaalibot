@@ -3,17 +3,17 @@
   "config": {
     "lists": [
       {
-        "name": "Toimarit",
-        "change_text": "Uusi toimariehdokas!",
-        "api_url": "https://athene.fi/vaalit/api/discussions?include=user%2ClastPostedUser%2CfirstPost%2Ctags&filter%5Bq%5D=%20tag%3Aehdokkaat-toimihenkilovirkoihin&",
-        "user_url": "https://athene.fi/vaalit/t/ehdokkaat-toimihenkilovirkoihin?sort=newest",
+        "name": "Officials",
+        "change_text": "New guild official candidate!",
+        "api_url": "https://athene.fi/vaalit/api/discussions?include=user%2ClastPostedUser%2CfirstPost%2Ctags&filter%5Bq%5D=%20tag%3Aehdokkaat-toimihenkil-virkoihin-candidates-for-official-positions&",
+        "user_url": "https://athene.fi/vaalit/t/ehdokkaat-toimihenkil-virkoihin-candidates-for-official-positions?sort=newest",
         "last_count": 0
       },
       {
-        "name": "Hallitus",
-        "change_text": "Uusi hallitusehdokas!",
-        "api_url": "https://athene.fi/vaalit/api/discussions?include=user%2ClastPostedUser%2CfirstPost%2Ctags&filter%5Bq%5D=%20tag%3Aehdokkaat-hallitukseen&",
-        "user_url": "https://athene.fi/vaalit/t/ehdokkaat-hallitukseen?sort=newest",
+        "name": "Board",
+        "change_text": "New board member candidate!",
+        "api_url": "https://athene.fi/vaalit/api/discussions?include=user%2ClastPostedUser%2CfirstPost%2Ctags&filter%5Bq%5D=%20tag%3Aehdokkaat-hallitukseen-candidates-for-the-board&",
+        "user_url": "https://athene.fi/vaalit/t/ehdokkaat-hallitukseen-candidates-for-the-board?sort=newest",
         "last_count": 0
       }
     ]
