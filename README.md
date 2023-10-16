@@ -13,3 +13,6 @@ export VAALI_BOT_TOKEN=your_telegram_token_here
 # channel bot (only sends message to one chat/channel)
 VAALI_BOT_TOKEN=your_telegram_token_here VAALI_BOT_CHAT_ID=channel_chat_id_here ./channel_bot.py
 ```
+
+Channel bot exits after going through the candidate lists and sending updates.
+Scheduled runs e.g. using `cron` are the recommended way to run the channel bot.
