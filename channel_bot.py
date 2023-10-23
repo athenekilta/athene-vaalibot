@@ -19,23 +19,26 @@ def log(message):
 
 bot = telebot.TeleBot(token, parse_mode="MARKDOWN")
 
-with open("data.json", "r") as datafile:
-    data = json.load(datafile)
+def load_data():
+    with open("data.json", "r") as datafile:
+        return json.load(datafile)
 
-def save_data():
+def save_data(data):
     with open("data.json", "w") as datafile:
         json.dump(data, datafile)
 
 def situation():
     response_text = ""
-    for election_list in data["config"]["lists"]:
+    for election_list in load_data()["config"]["lists"]:
         list_link = f"[{election_list['name']}]({election_list['user_url']})"
         response_text += f"{list_link}: {str(election_list['last_count'])}\n"
     response_text += "More information on the forum: https://athene.fi/vaalit/"
     return response_text
 
 new_posts = False
+load_data()
 log("Going through election lists")
+data = load_data()
 for election_list in data["config"]["lists"]:
     log(f"Current list: {election_list['name']}")
     api_response = json.loads(requests.get(election_list["api_url"]).text)
@@ -48,5 +51,5 @@ for election_list in data["config"]["lists"]:
         log(f"{new_count} > {election_list['last_count']}: {election_list['change_text']}")
         bot.send_message(chat_id, election_list["change_text"] + "\n" + election_list["user_url"])
     election_list["last_count"] = new_count
-    save_data()
+    save_data(data)
 if new_posts: bot.send_message(chat_id, situation())
