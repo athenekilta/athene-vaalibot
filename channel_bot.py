@@ -32,7 +32,7 @@ def situation():
     for election_list in load_data()["config"]["lists"]:
         list_link = f"[{election_list['name']}]({election_list['user_url']})"
         response_text += f"{list_link}: {str(election_list['last_count'])}\n"
-    response_text += "More information on the forum: https://athene.fi/vaalit/"
+    response_text += "More information on the forum: https://vaalit.athene.fi/"
     return response_text
 
 new_posts = False

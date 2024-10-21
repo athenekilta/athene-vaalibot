@@ -55,7 +55,7 @@ def situation(message):
     for election_list in data["config"]["lists"]:
         list_link = f"[{election_list['name']}]({election_list['user_url']})"
         response_text += f"{list_link}: {str(election_list['last_count'])}\n"
-    response_text += "Tarkemmat tiedot: https://athene.fi/vaalit/"
+    response_text += "Tarkemmat tiedot: https://vaalit.athene.fi/"
     bot.reply_to(message, response_text)
 
 thread = threading.Thread(target=bot.polling)
